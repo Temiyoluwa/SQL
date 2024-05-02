@@ -5,14 +5,12 @@ CREATE TABLE Card_Holder
 		Card_Holder_NAME VARCHAR (50) NOT NULL
 )
 
-
 --CREDIT CARD TABLE
 CREATE TABLE Credit_Card
 (
 	Credit_Card_Number VARCHAR(20) NOT NULL,
 	Card_Holder_ID varchar(20) NOT NULL
 )
-
 
 --MERCHANT NAME TABLE
 CREATE TABLE Merchant_Names
@@ -22,15 +20,12 @@ CREATE TABLE Merchant_Names
 	Merchant_Category_ID INT NOT NULL 
 )
 
-
-
 --MERCHANT CATEGORY TABLE
 CREATE TABLE Merchant_Category
 (
 	Merchant_Category_ID INT NOT NULL,
 	Merchant_Category_Name VARCHAR(20) NOT NULL
 )
-
 
 --TRANSACTION TABLE
 CREATE TABLE Transactions
