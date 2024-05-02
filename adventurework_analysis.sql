@@ -7,20 +7,19 @@ SELECT
 FROM 
 	Sales.SalesOrderHeader
 
---List unique product categories from the 'ProductCategory' table.
+--what are the unique product categories from the 'ProductCategory' table.
 SELECT 
 	DISTINCT name AS product_category
 FROM
 	Production.ProductCategory
 
---Find the average list price of all products.
+--What is the average list price of all products.
 SELECT 
 	AVG(listprice) AS [Average list price]
 FROM 
 	Production.Product
 
-
---Show the top 10 customer ID based on their total order amount
+--What are the top 10 customer ID based on their total order amount
 SELECT TOP 10
 	CustomerID, 
 	SUM(totaldue) AS total_amount
@@ -30,7 +29,6 @@ GROUP BY
 	CustomerID 
 ORDER BY
 	total_amount DESC
-
 
 --What are the total sales amount for each year from the 'SalesOrderHeader' table.
 SELECT 
@@ -55,25 +53,23 @@ GROUP BY
 ORDER BY 
 	total_orders DESC
 
-
 --What are the total sales amounts for each product category over the past year? and how do the product category rank each year
 SELECT 
 	Year,
 	production_pc.Name AS product_category,
 	SUM(OrderQty * UnitPrice) AS Total_sales,
 	RANK() OVER(PARTITION BY (year) ORDER BY SUM(OrderQty * UnitPrice) DESC) AS product_cat_rank
-from  
+FROM  
 	(SELECT 
 		SalesOrderID, 
 		DATEPART(YEAR,OrderDate) AS year 
-	from 
+	FROM 
 		Sales.SalesOrderHeader) AS subquery1,
 		Sales.SalesOrderDetail AS sales_od
  JOIN Production.Product AS production_p on production_p.ProductID = sales_od.ProductID
  JOIN Production.ProductCategory AS production_pc ON production_pc.ProductCategoryID = production_p.ProductSubcategoryID 
 GROUP BY 
 	production_pc.Name, YEAR
-
 
 --Which sales person met up with their quota, and how much did revenue did they generate
 SELECT 
@@ -98,7 +94,6 @@ GROUP BY
 	sp.BusinessEntityID,full_name,OS.SalesQuota
 HAVING 
 	SUM(UnitPrice * OrderQty) > OS.SalesQuota
-
 
 --What is the total cost,revenue, profit and profit percentage for each product
 SELECT Name AS product, 
