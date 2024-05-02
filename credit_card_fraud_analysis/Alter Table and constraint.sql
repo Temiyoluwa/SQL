@@ -2,8 +2,6 @@
 Alter TABLE Card_Holder
 	Alter Column Card_Holder_ID varchar(50)
 
-
-
 --CREDIT CARD TABLE
 ALTER TABLE Credit_Card
 	ALTER COLUMN Credit_Card_Number VARCHAR(50)
@@ -13,14 +11,10 @@ ALTER TABLE Credit_Card
 	ALTER COLUMN Card_Holder_ID INT
 go
 
-
-
-
 --MERCHANT CATEGORY TABLE
 ALTER TABLE Merchant_Category
 	ALTER COLUMN Merchant_Category_Name VARCHAR(50)
 GO
-
 
 --TRANSACTION TABLE
 ALTER TABLE Transactions
