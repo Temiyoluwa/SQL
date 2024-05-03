@@ -1,13 +1,7 @@
 USE Credit_Card_Details
 GO
 
-
-SELECT * 
-FROM 
-TRANSACTIONS
-GO
-
---Little data transformation steps
+--few data transformation steps
 --splitting the date and time column
 select
 	Transaction_Date, PARSENAME(REPLACE(Transaction_Date, ' ','.'),1) 
